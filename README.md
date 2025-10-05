@@ -89,7 +89,7 @@ See general file details at the end [here](#file-details).
 ![AI UI Sketch](images/ai_ui_final.jpeg)
 
 
-- *User Journey*: Sarah arrives at an event, finds the event in LineLines and types into the input box: “line is halfway down the block, moving fast” into the app's feedback form. The AI interprets this into ~40 people with an estimated 25 min wait. The forecast screen updates with: “About a half an hour wait, fast entry pace, 90% chance of getting in.” Sarah sees the summary and decides whether to stay. If she disagrees, she has the option to revise the numbers manually / provide more information / flag the response. If she agrees she can hit the confirm button or simple do nothing and the timer in the app will provide a countdown to track the passing time. 
+- *User Journey*: Sarah arrives at an event, finds the event in LineLines and types into the input box: “line is halfway down the block, moving fast” into the app's feedback form. The AI interprets this into ~40 people with an estimated 25 min wait. The forecast screen updates with: “About a half an hour wait, fast entry pace, 90% chance of getting in.” Sarah sees the summary and decides whether to stay. If she disagrees, she has the option to revise the numbers manually / provide more information / flag the response. If she agrees she can hit the confirm button or simple do nothing, and the timer in the app will provide a countdown to track the passing time that is consistent with output time. 
 
 
 ## Test Cases & Prompts (What wored, went wrong, remaining issues)
