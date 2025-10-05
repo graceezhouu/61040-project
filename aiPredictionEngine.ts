@@ -41,7 +41,7 @@ interface StoredQueue {
 
 export class PredictionEngine {
   private llm: GeminiLLM;
-  // In-memory stores (simple prototype)
+  //in-memory stores
   private userReports: Map<string, UserReport[]> = new Map();
   private predictions: Map<string, PredictionResult> = new Map();
   private queues: Map<string, StoredQueue> = new Map();
@@ -50,7 +50,7 @@ export class PredictionEngine {
     this.llm = llm;
   }
 
-  // Create or update a queue (minimal)
+  //create or update a queue (minimal)
   createQueue(queueID: string, historicalAvgMins?: number | null, historicalAvgPpl?: number | null) {
     this.queues.set(queueID, {
       queueID,
@@ -60,7 +60,7 @@ export class PredictionEngine {
     this.userReports.set(queueID, []);
   }
 
-  // Append a raw user report (text)
+  //apend a raw user report (text)
   submitUserReport(queueID: string, rawText: string, userID?: string) {
     if (!this.queues.has(queueID)) throw new Error(`Queue ${queueID} does not exist`);
     const r: UserReport = {
@@ -74,9 +74,9 @@ export class PredictionEngine {
     return r.id;
   }
 
-  // Interpret a single report using the LLM. Returns structured UserReport.
+  //interpret a single report using the LLM. Returns structured UserReport.
   async interpretReport(reportId: string, promptVariant = 0): Promise<UserReport> {
-    // locate report
+    //locate report
     let targetReport: UserReport | undefined;
     for (const [q, list] of this.userReports.entries()) {
       const found = list.find((r) => r.id === reportId);
@@ -86,7 +86,7 @@ export class PredictionEngine {
 
     const prompt = this.buildInterpretPrompt(targetReport.rawText, promptVariant);
 
-    console.log(`\n🧠 interpretReport: sending to LLM (variant ${promptVariant})`);
+    console.log(`\nInterpretReport: sending to LLM (variant ${promptVariant})`);
     console.log('PROMPT (truncated):', prompt.slice(0, 450), '...\n');
 
     const raw = await this.llm.executeLLM(prompt, 300);
@@ -103,12 +103,12 @@ export class PredictionEngine {
     try {
       parsed = JSON.parse(jsonMatch[0]);
     } catch (err) {
-      // If parse fails, try to be tolerant: replace single quotes etc
+      //if parse fails, try to be tolerant: replace single quotes etc
       const cleaned = jsonMatch[0].replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":').replace(/'/g, '"');
       parsed = JSON.parse(cleaned);
     }
 
-    // Validate and normalize parsed result
+    //validate and normalize parsed result
     const validated = this.validateInterpreted(parsed);
 
     // merge into stored report object
