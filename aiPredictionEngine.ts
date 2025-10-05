@@ -322,7 +322,7 @@ Return a JSON object containing optionally:
 Be concise. Return ONLY the JSON object.`;
   }
 
-  // Basic validation of interpreted fields (from LLM)
+  //basic validation of interpreted fields (from LLM)
   private validateInterpreted(parsed: any): {
     estPplInLine: number | null;
     estimatedWaitMins: number | null;

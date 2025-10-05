@@ -124,6 +124,7 @@ For my prototype, I pinpoint a few catagories of plausible issues that my LLM wo
 4. `runPrediction(queueID)` — this function aggregates historical values and any interpreted reports to compute numeric predictions (est wait minutes, entry probability, confidence interval). Save a preliminary PredictionResult, then call the LLM (see step 4) to produce an AI summary. It also validates any suggested numeric overrides before applying them, save the final prediction, and return it.
 
 5. `summarizeForecast(queueID)` **[LLM USAGE HERE]** - this function asks the LLM to produce a single-sentence JSON summary and numeric suggestions.
+    - No variants used here, just one prompt for simplicity! 
     - Sample summary: 'The queue is experiencing significant variability. While the baseline estimate is 45 minutes with a 73% entry probability, recent reports range from a fast-moving line with about 10 people inside to a "disaster" with over 100 people and no movement. The wait time could be anywhere from 30 to 60 minutes.'
 
 ## File Details
