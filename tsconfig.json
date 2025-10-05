@@ -20,9 +20,9 @@
     "*.ts"
   ],
   "files": [
-    "dayplanner.ts",
+    "aiPredictionEngine.ts",
     "gemini-llm.ts",
-    "dayplanner-tests.ts"
+    "aiPredictionEngine-tests.ts"
   ],
   "exclude": [
     "node_modules",

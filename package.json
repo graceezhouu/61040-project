@@ -1,18 +1,16 @@
+
 {
-  "name": "gemini-schedule-demo",
+  "name": "predictionengine-demo",
   "version": "1.0.0",
-  "description": "A demo application showing how to use Google's Gemini API to create student schedules",
-  "main": "dist/dayplanner-tests.js",
+  "description": "AI-augmented PredictionEngine using Google's Gemini API",
+  "main": "dist/aiPredictionEngine-tests.js",
   "scripts": {
     "build": "tsc",
-    "start": "npm run build && node dist/dayplanner-tests.js",
-    "dev": "ts-node --transpile-only dayplanner-tests.ts",
-    "test": "npm run build && node dist/dayplanner-tests.js",
-    "manual": "npm run build && node -e \"require('./dist/dayplanner-tests.js').testManualScheduling()\"",
-    "llm": "npm run build && node -e \"require('./dist/dayplanner-tests.js').testLLMScheduling()\"",
-    "mixed": "npm run build && node -e \"require('./dist/dayplanner-tests.js').testMixedScheduling()\""
+    "start": "npm run build && node dist/aiPredictionEngine-tests.js",
+    "dev": "ts-node --transpile-only src/aiPredictionEngine-tests.ts",
+    "test": "npm run build && node dist/aiPredictionEngine-tests.js"
   },
-  "keywords": ["gemini", "ai", "schedule", "student", "demo", "typescript"],
+  "keywords": ["gemini", "ai", "predictionengine", "typescript"],
   "author": "Student Demo",
   "license": "MIT",
   "dependencies": {

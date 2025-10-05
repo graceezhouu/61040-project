@@ -1,5 +1,5 @@
 /**
- * LLM Integration for DayPlanner
+ * LLM Integration for DayPlanner, minor modification for LineLines 
  * 
  * Handles the requestAssignmentsFromLLM functionality using Google's Gemini API.
  * The LLM prompt is hardwired with user preferences and doesn't take external hints.
@@ -21,14 +21,19 @@ export class GeminiLLM {
         this.apiKey = config.apiKey;
     }
 
-    async executeLLM (prompt: string): Promise<string> {
+    /**
+
+   * NOTE: making it 600 to keep maxOutputTokens finite to avoid runaway costs.
+    Changed from 1000. 10/5/25
+   */
+    async executeLLM (prompt: string, maxOutputTokens: number = 600): Promise<string> {
         try {
             // Initialize Gemini AI
             const genAI = new GoogleGenerativeAI(this.apiKey);
             const model = genAI.getGenerativeModel({ 
                 model: "gemini-2.5-flash-lite",
                 generationConfig: {
-                    maxOutputTokens: 1000,
+                    maxOutputTokens,
                 }
             });
             // Execute the LLM
